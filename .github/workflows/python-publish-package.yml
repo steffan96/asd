@@ -3,7 +3,7 @@ name: Publish package
 on:
   push:
     tags:
-      - "redalert6"
+      - "redalert7"
 
 jobs:
   publish:
@@ -22,6 +22,6 @@ jobs:
         env:
           TEST_PYPI_API_TOKEN: ${{ secrets.TEST_PYPI_API_TOKEN }}
         run: |
-          poetry config repositories.test-pypi https://test.pypi.org/legacy/
+          poetry config repositories.testpypi https://test.pypi.org/legacy/
           export POETRY_PYPI_TOKEN_PYPI=$TEST_PYPI_API_TOKEN
           poetry publish -r testpypi
