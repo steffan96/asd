@@ -1,14 +1,31 @@
-name: Python package
+name: Publish
+
 on:
-  push:
-    tags:
-      - "released"
+  release:
+    types:
+      - created
+
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build and publish to pypi
-        uses: JRubics/poetry-publish@v1.11
+      - name: Set up Python
+        uses: actions/setup-python@v1
         with:
-          pypi_token: ${{ secrets.PYPI_API_TOKEN }}
+          python-version: "3.10"
+      - name: Install poetry
+        run: |
+          curl -fsS -o get-poetry.py https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
+          python get-poetry.py -y
+          echo "::set-env name=PATH::$HOME/.poetry/bin:$PATH"
+      - name: Configure poetry
+        run: poetry config virtualenvs.in-project true
+      - name: Install Dependencies
+        run: poetry install
+      - name: Publish
+        env:
+          PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          poetry config pypi-token.pypi $PYPI_TOKEN
+          bash scripts/publish.sh
