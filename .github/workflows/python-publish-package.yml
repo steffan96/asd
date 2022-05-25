@@ -3,21 +3,15 @@ name: Publish package
 on:
   push:
     tags:
-      - "re"
+      - "red"
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: "3.10"
-      - name: Install poetry
-        run: |
-          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-      - name: Install Dependencies
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Configure System and Project
         run: |
           poetry install
       - name: Publish
