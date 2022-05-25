@@ -3,7 +3,7 @@ name: Python package publish
 on:
   push:
     tags:
-      - "redalert30"
+      - "redalert31"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,7 +13,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install poetry
-          export ASD='8c3e3006-9872-40c4-8b1e-243e454457ba'
+          export ASD='pypi-AgEIcHlwaS5vcmcCJDhjM2UzMDA2LTk4NzItNDBjNC04YjFlLTI0M2U0NTQ0NTdiYQACJXsicGVybWlzc2lvbnMiOiAidXNlciIsICJ2ZXJzaW9uIjogMX0AAAYgZS1-eKgQnSHs5YYvzqQhHlgqIP34rHyFUG20iU2dSCM'
       - name: Build and publish to pypi
         uses: JRubics/poetry-publish@v1.11
         with:
