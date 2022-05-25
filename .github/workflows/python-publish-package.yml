@@ -3,7 +3,7 @@ name: Publish package
 on:
   push:
     tags:
-      - "rele"
+      - "rel"
 
 jobs:
   publish:
@@ -16,11 +16,9 @@ jobs:
           python-version: "3.10"
       - name: Install poetry
         run: |
-          curl -fsS -o get-poetry.py https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
-          python get-poetry.py -y
+          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
       - name: Install Dependencies
           run:|
-            cd asdasd123
             poetry install
       - name: Publish
         env:
