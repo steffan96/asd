@@ -3,7 +3,7 @@ name: Publish package
 on:
   push:
     tags:
-      - "redalert21"
+      - "redalert22"
 
 jobs:
   publish:
@@ -21,11 +21,12 @@ jobs:
           export PATH=$PATH:$HOME/.poetry/bin
           poetry install
       - name: Publish
-        
+        env:
+          PYPI_TOKEN: ${{ secrets.TEST_PYPI_API_TOKEN }}
         run: |
-          export TEST_PYPI_API_TOKEN=${{ secrets.TEST_PYPI_API_TOKEN }}
-          poetry config http-basic.pypi "__token__" "${TEST_PYPI_API_TOKEN}"
+          poetry build
+          poetry config http-basic.pypi "__token__" $PYPI_TOKEN
           
           export POETRY_REPOSITORIES_TESTPYPI_URL=https://test.pypi.org/legacy/
-          poetry build
+        
           poetry publish -r testpypi
