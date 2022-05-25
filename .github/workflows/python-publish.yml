@@ -3,7 +3,7 @@ name: Python package publish
 on:
   push:
     tags:
-      - "redalert35"
+      - "redalert36"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,7 +15,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install poetry
-          poetry config test-pypi-token.test-pypi ${{ secrets.TEST_PYPI_API_TOKEN }}
+          poetry config pypi-token.test-pypi ${{ secrets.TEST_PYPI_API_TOKEN }}
       - name: Build and publish to pypi
         uses: JRubics/poetry-publish@v1.11
         with:
