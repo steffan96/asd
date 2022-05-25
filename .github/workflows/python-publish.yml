@@ -3,7 +3,7 @@ name: Python package publish
 on:
   push:
     tags:
-      - "redale"
+      - "redaler"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,7 +13,7 @@ jobs:
         run: |
           curl -fsS -o get-poetry.py https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
           python get-poetry.py -y
-          echo "::set-env name=PATH::$HOME/.poetry/bin:$PATH"
+          export PATH=$PATH:$HOME/.poetry/bin
       - name: Publish
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
