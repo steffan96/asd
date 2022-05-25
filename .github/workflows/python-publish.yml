@@ -13,7 +13,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install poetry
-          export ASD='1475d450-5514-4d41-b927-cd0bbb08e04f'
+          export ASD='8c3e3006-9872-40c4-8b1e-243e454457ba'
       - name: Build and publish to pypi
         uses: JRubics/poetry-publish@v1.11
         with:
