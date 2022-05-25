@@ -3,7 +3,7 @@ name: Publish package
 on:
   push:
     tags:
-      - "reda"
+      - "redalert43"
 
 jobs:
   publish:
@@ -11,14 +11,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Configure System and Project
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.10"
+      - name: Install poetry
         run: |
           python -m pip install --upgrade pip
           pip install poetry
-          poetry install
+          export PATH=$PATH:$HOME/.poetry/bin
+          
       - name: Publish
-        env:
-          PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
         run: |
-          poetry config pypi-token.pypi $PYPI_TOKEN
-          bash scripts/publish.sh
+          export PYPI_USERNAME=__token__
+          export PYPI_PASSWORD=pypi-AgENdGVzdC5weXBpLm9yZwIkMTQ3NWQ0NTAtNTUxNC00ZDQxLWI5MjctY2QwYmJiMDhlMDRmAAIleyJwZXJtaXNzaW9ucyI6ICJ1c2VyIiwgInZlcnNpb24iOiAxfQAABiCCkwxsyj4LudJvlKj1w1pQh34YE7S83ywFqB5gkun1Yw
+          poetry publish --build --username $PYPI_USERNAME --password $PYPI_PASSWORD
