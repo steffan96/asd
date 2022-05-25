@@ -3,7 +3,7 @@ name: Publish package
 on:
   push:
     tags:
-      - "redalert15"
+      - "redalert16"
 
 jobs:
   publish:
@@ -16,7 +16,7 @@ jobs:
           python-version: "3.10"
       - name: Install poetry
         run: |
-          py -m pip install --upgrade pip
+          python -m pip install --upgrade pip
           pip install poetry
           export PATH=$PATH:$HOME/.poetry/bin
           poetry install
