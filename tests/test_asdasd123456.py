@@ -1,4 +1,4 @@
-from asdasd123 import __version__
+from asdasd123456 import __version__
 
 
 def test_version():
