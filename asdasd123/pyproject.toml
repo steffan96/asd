@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "asdasd123"
+version = "0.1.0"
+description = ""
+authors = ["steffan96 <stefanmilicic@yahoo.com>"]
+
+# New attributes
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/steffan96/asd"
+repository = "https://github.com/steffan96/asd"
+keywords = ["flake8", "markdown", "lint"]
+classifiers = [
+    "Environment :: Console",
+    "Framework :: Flake8",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Quality Assurance",
+]
+include = [
+    "LICENSE",
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
