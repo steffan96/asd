@@ -3,7 +3,7 @@ name: Publish package
 on:
   push:
     tags:
-      - "redalert"
+      - "redalert2"
 
 jobs:
   publish:
@@ -16,11 +16,8 @@ jobs:
           python-version: "3.7"
       - name: Install poetry
         run: |
-          curl -fsS -o get-poetry.py https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py
-          python get-poetry.py -y
-          export PATH=$PATH:$HOME/.poetry/bin
-      - name: Install Dependencies
-        run: poetry install
+          python -m pip install --upgrade pip
+          pip install poetry
       - name: Publish
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
