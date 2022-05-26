@@ -3,7 +3,7 @@ name: Publish package
 on:
   push:
     tags:
-      - "redalert49"
+      - "redalert50"
 
 jobs:
   publish:
