@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "asdasd123456"
 version = "0.1.1"
-description = "0.1.1 version"
+description = "0.1.1 Version"
 authors = ["steffan96 <stefanmilicic@yahoo.com>"]
 
 # New attributes
