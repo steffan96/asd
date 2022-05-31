@@ -28,5 +28,5 @@ jobs:
         run: |
           export POETRY_REPOSITORIES_TESTPYPI_URL=https://test.pypi.org/legacy/
           export PYPI_USERNAME=__token__
-          export PYPI_PASSWORD="$SUPER_SECRET"
+          export PYPI_PASSWORD="$TEST_PYPI_API_TOKEN"
           poetry publish -r testpypi --build --username $PYPI_USERNAME --password $PYPI_PASSWORD
