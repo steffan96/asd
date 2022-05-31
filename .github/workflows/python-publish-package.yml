@@ -25,5 +25,5 @@ jobs:
         run: |
           export POETRY_REPOSITORIES_TESTPYPI_URL=https://test.pypi.org/legacy/
           export PYPI_USERNAME=__token__
-          export PYPI_PASSWORD=pypi-AgENdGVzdC5weXBpLm9yZwIkMTQ3NWQ0NTAtNTUxNC00ZDQxLWI5MjctY2QwYmJiMDhlMDRmAAIleyJwZXJtaXNzaW9ucyI6ICJ1c2VyIiwgInZlcnNpb24iOiAxfQAABiCCkwxsyj4LudJvlKj1w1pQh34YE7S83ywFqB5gkun1Yw
+          export PYPI_PASSWORD=${{ secrets.TEST_PYPI_API_TOKEN }}
           poetry publish -r testpypi --build --username $PYPI_USERNAME --password $PYPI_PASSWORD
